@@ -5,6 +5,8 @@ using namespace KamataEngine;
 TitleScene::~TitleScene() {
 
 	delete fade_;
+	delete startbarSprite_;
+	delete titleSprite_;
  }
 
 void TitleScene::Initialize() {
@@ -21,9 +23,27 @@ void TitleScene::Initialize() {
 	fade_->Initialize();
 
 	fade_->Start(Fade::Status::FadeIn, 1.0f);
+
+	// 画像読み込み
+	startbarHandle_ = TextureManager::Load("Sprite/start.png");//追加
+	titleHandle_ = TextureManager::Load("Sprite/title.png"); // 追加
+
+	//スプライトのインスタンスの生成
+	startbarSprite_ = Sprite::Create(startbarHandle_, {400, 560});//追加
+	titleSprite_ = Sprite::Create(titleHandle_, {0,0});//追加
+
 }
 
 void TitleScene::Update() {
+
+	// スタートバーを点滅させる
+	startbarTimer_ += 1.0f / 60.0f;
+
+	// 透明度を0～1の間で変化させる
+	startbarAlpha_ = (sinf(startbarTimer_ * 3.0f) + 1.0f) / 2.0f;
+
+	startbarSprite_->SetColor({1.0f, 1.0f, 1.0f, startbarAlpha_});
+
 
 	switch (phase_) {
 	case Phase::kMain:
@@ -50,6 +70,16 @@ void TitleScene::Update() {
 void TitleScene::Draw() {
 
 	DirectXCommon* dxCommon = DirectXCommon::GetInstance();
+
+	//スプライト描画
+	Sprite::PreDraw(dxCommon->GetCommandList());
+
+	titleSprite_->Draw();
+	startbarSprite_->Draw();
+	
+
+	// スプライト描画終了
+	Sprite::PostDraw();
 
 	Model::PreDraw(dxCommon->GetCommandList());
 

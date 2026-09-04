@@ -32,4 +32,16 @@ private:
 	Fade* fade_ = nullptr;
 
 	Phase phase_ = Phase::kFadeIn;
+
+	//追加↓
+	// スプライト
+	KamataEngine::Sprite* startbarSprite_ = nullptr;
+	KamataEngine::Sprite* titleSprite_ = nullptr;
+	//画像
+	uint32_t startbarHandle_ = 0;
+	uint32_t titleHandle_ = 0;
+
+	// 点滅用
+	float startbarAlpha_ = 1.0f;
+	float startbarTimer_ = 0.0f;
 };
