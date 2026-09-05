@@ -5,8 +5,8 @@ using namespace KamataEngine;
 TitleScene::~TitleScene() {
 
 	delete fade_;
-	delete startbarSprite_;
-	delete titleSprite_;
+	delete startbarSprite_; // 追加
+	delete titleSprite_;    // 追加
  }
 
 void TitleScene::Initialize() {
@@ -37,12 +37,12 @@ void TitleScene::Initialize() {
 void TitleScene::Update() {
 
 	// スタートバーを点滅させる
-	startbarTimer_ += 1.0f / 60.0f;
+	startbarTimer_ += 1.0f / 60.0f; // 追加
 
 	// 透明度を0～1の間で変化させる
-	startbarAlpha_ = (sinf(startbarTimer_ * 3.0f) + 1.0f) / 2.0f;
+	startbarAlpha_ = (sinf(startbarTimer_ * 3.0f) + 1.0f) / 2.0f;//追加
 
-	startbarSprite_->SetColor({1.0f, 1.0f, 1.0f, startbarAlpha_});
+	startbarSprite_->SetColor({1.0f, 1.0f, 1.0f, startbarAlpha_}); //追加
 
 
 	switch (phase_) {
@@ -74,8 +74,8 @@ void TitleScene::Draw() {
 	//スプライト描画
 	Sprite::PreDraw(dxCommon->GetCommandList());
 
-	titleSprite_->Draw();
-	startbarSprite_->Draw();
+	titleSprite_->Draw(); // 追加
+	startbarSprite_->Draw(); // 追加
 	
 
 	// スプライト描画終了
