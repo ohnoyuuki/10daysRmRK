@@ -195,6 +195,11 @@ void GameScene::Update() {
 
 	fade_->Update();
 
+	// Eキーを押したらスコアシーンへ
+	if (Input::GetInstance()->TriggerKey(DIK_E)) {
+		finished_ = true;
+	}
+
 	switch (phase_) {
 	case Phase::kPlay:
 		CheckAllCollisions();
