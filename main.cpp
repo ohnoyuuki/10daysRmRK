@@ -30,7 +30,7 @@ TitleScene* titleScene = nullptr;
 int WINAPI WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int) {
 
 	// エンジンの初期化
-	KamataEngine::Initialize(L"壁壊す");
+	KamataEngine::Initialize(L"3064_ルームリンカー");
 
 	// DirectXCommon*インスタンスの取得
 	DirectXCommon* dxCommon = DirectXCommon::GetInstance();
