@@ -31,7 +31,7 @@ void GameScene::Initialize() {
 
 	// 自キャラ生成
 	player_ = new Player();
-	Vector3 playerPosition = mapChipField_->GetMapChipPositionByIndex(9, 10);
+	Vector3 playerPosition = mapChipField_->GetMapChipPositionByIndex(3, 18);
 
 	worldTransform_.Initialize();
 	player_->Initialize(modelPlayer_, &camera_, playerPosition);
